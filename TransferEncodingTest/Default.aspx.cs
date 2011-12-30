@@ -8,7 +8,7 @@ namespace TransferEncodingTest
         protected void btnCreatePdf_Click(object sender, EventArgs e)
         {
             RegisterFilter();
-            var filePath = Server.MapPath("~/TestPdf.pdf");
+            var filePath = Server.MapPath("~/App_Data/TestPdf.pdf");
             var fileInfo = new FileInfo(filePath);
             Response.ClearHeaders();
             Response.ContentType = "application/pdf";
