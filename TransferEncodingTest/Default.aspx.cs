@@ -31,11 +31,9 @@ namespace TransferEncodingTest
         private void SendFileInChunks(byte[] fileBytes)
         {
             var buffer = new byte[1024];
-            int offset = 0;
-
             int read;
             var stream = new MemoryStream(fileBytes);
-            while ((read = stream.Read(buffer, offset, 1024)) > 0)
+            while ((read = stream.Read(buffer, 0, 1024)) > 0)
             {
                 if (!Response.IsClientConnected) break;
                 Response.OutputStream.Write(buffer, 0, read);
