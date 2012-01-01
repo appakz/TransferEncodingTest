@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using TransferEncodingTest.Http;
 using sharpPDF.Enumerators;
-using sharpPDF.Fonts;
 
 namespace TransferEncodingTest
 {
@@ -54,32 +54,19 @@ namespace TransferEncodingTest
             Response.Filter = new DoNothingFilter(Response.Filter);
         }
 
-        private byte[] CreateFile()
+        private static byte[] CreateFile()
         {
             var stream = new MemoryStream();
             using (var document = new sharpPDF.pdfDocument("test", "Jesse Taber"))
             {
-                var page = document.addPage();
-                page.addText("Hello World!!", 200, 450, document.getFontReference(predefinedFont.csHelvetica), 20);
+                for(var i=0;i<10;i++)
+                {
+                    var page = document.addPage();
+                    page.addText("Hello World!!", 200, 450, document.getFontReference(predefinedFont.csHelvetica), 20);
+                }
                 document.createPDF(stream);
             }
             return stream.ToArray();
-        }
-    }
-
-    public class DoNothingFilter : MemoryStream
-    {
-        private readonly Stream _outputStream;
-
-        public DoNothingFilter(Stream stream)
-        {
-            _outputStream = stream;
-        }
-
-        public override void Write(byte[] buffer, int offset, int count)
-        {
-            //do nothing, just pass this call through
-            _outputStream.Write(buffer, offset, count);
         }
     }
 }
