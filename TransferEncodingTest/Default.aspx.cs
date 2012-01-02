@@ -44,6 +44,7 @@ namespace TransferEncodingTest
         private void SendFileInOneShot(byte[] fileBytes)
         {
             Response.OutputStream.Write(fileBytes, 0, fileBytes.Length);
+            Response.Flush();
         }
 
         private void RegisterFilter()
