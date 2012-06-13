@@ -1,0 +1,10 @@
+This is a simple ASP .NET Web Forms application to reproduce an odd issue I encountered when using a 
+combination of HTTP Filters and "chunking" data being sent to a browser.
+
+The following SO question and blog post have additional details:
+
+Stack Overflow Question:
+http://stackoverflow.com/questions/8582637/why-is-asp-net-replacing-a-content-length-header-with-a-transfer-encoding-header
+
+Blog Post:
+http://geekswithblogs.net/GruffCode/archive/2012/01/02/lsquocontent-lengthrsquo-header-replaced-with-lsquotransfer-encoding-chunkedrsquo-in-asp-.net.aspx
